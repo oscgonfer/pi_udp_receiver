@@ -27,6 +27,7 @@ void ofApp::setup(){
 	}
 	resetTime = 0;
 	reset_counter =0;
+	width_screen_half = ofGetWidth()/2;
 }
 
 //--------------------------------------------------------------
@@ -100,13 +101,12 @@ void ofApp::update(){
 				case 56:
 					rectOffsetx --;
 					break;
-				/*case 57:
+				case 97:
 					rectOffsety ++;
 					break;
-				case 48:
+				case 115:
 					rectOffsety --;
 					break;
-				*/
 				case 57:
 					thicknessx ++;
 					break;
@@ -117,13 +117,12 @@ void ofApp::update(){
 					cout << "minRectPosx " << minRectPosx << " | minRectPosy " << minRectPosy << " | rectSide " << rectSidex << " | rectSidey " << rectSidey << " | anglex "<< anglex << " | angley "<< angley << " | anglez "<< anglez << " | rectOffsetx " << rectOffsetx << " | rectOffsety " << rectOffsety << endl;
 					cout << "thicknessx " << thicknessx << " | thicknessy " << thicknessy << endl;
 					break;
-				/*case 114:
+				case 100:
 					anglex += 0.1;
 					break;
-				case 116:
+				case 102:
 					anglex -= 0.1;
 					break;
-				*/
 				case 114:
 					thicknessy ++;
 					break;
@@ -149,6 +148,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	
 	float alpha;
 	float alphaReset;
 	float pi = 3.14159;
@@ -159,6 +159,8 @@ void ofApp::draw(){
 	float now;
 	bool reset_status = true;
 	now = ofGetElapsedTimef();
+
+	ofTranslate(width_screen_half, 0, 0);
 
 	ofRotateXDeg(anglex);
 	ofRotateYDeg(angley);
@@ -209,7 +211,7 @@ void ofApp::draw(){
 
 			// ofNoFill();
 			ofRectangle rectW;
-			rectW.x = minRectPosx + i*(rectSidex + rectOffsetx);
+			rectW.x = minRectPosx + i*(rectSidex + rectOffsetx)-width_screen_half;
 			rectW.y = minRectPosy + j*(rectSidey + rectOffsety);
 			rectW.width = rectSidex;
 			rectW.height = rectSidey;
@@ -234,7 +236,7 @@ void ofApp::draw(){
 				}
 
 				ofRectangle rect;
-				rect.x = minRectPosx + i*(rectSidex + rectOffsetx);
+				rect.x = minRectPosx + i*(rectSidex + rectOffsetx) - width_screen_half;
 				rect.y = minRectPosy + j*(rectSidey + rectOffsety);
 				rect.width = rectSidex;
 				rect.height = rectSidey;
@@ -244,4 +246,5 @@ void ofApp::draw(){
 			}
 		}
 	}
+	ofTranslate(-ofGetWidth()/2, 0, 0);
 }

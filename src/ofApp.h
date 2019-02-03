@@ -33,10 +33,11 @@ class ofApp : public ofBaseApp{
 		int rectOffsety = 103;
 		int rectSidex = 291;
 		int rectSidey = 178;
-		float anglex = -6.6;
-		float angley = -0.5;
-		float anglez = -0.4;
+		float anglex = 0;
+		float angley = 0;
+		float anglez = 0;
 		int thicknessx = 48;
 		int thicknessy = 33;
+		float width_screen_half;
 };
 
